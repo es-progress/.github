@@ -1,0 +1,13 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "**.yml"
+jobs:
+  format:
+    name: Check format
+    uses: .github/workflows/prettier.yml
+    with:
+      pattern: "**/*.yml"
