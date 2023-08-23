@@ -88,6 +88,36 @@ jobs:
       mkdocs_params: --strict
 ```
 
+### php-cs-fixer.yml
+
+Formats PHP code with `php-cs-fixer`.
+
+**Parameters**
+
+```
+params:
+  description: Options to 'php-cs-fixer fix'
+  type: string
+  required: false
+  default: .
+```
+
+**Example**
+
+```
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  code-style:
+    name: PHP code-style
+    uses: es-progress/.github/.github/workflows/php-cs-fixer.yml@main
+    with:
+      params: --dry-run -v --allow-risky=yes --rules=@PSR12:risky .
+```
+
 ### prettier.yml
 
 Checks code style with `prettier`. Currently only reports on bad formatting, no auto-correction.
