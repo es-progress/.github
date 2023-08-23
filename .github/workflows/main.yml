@@ -7,7 +7,7 @@ on:
       - "**.yml"
 jobs:
   format:
-    name: Check format (test)
+    name: Check format
     uses: ./.github/workflows/prettier.yml
     with:
       pattern: "**/*.yml"
