@@ -1,5 +1,7 @@
 # .github
 
+[![CI](https://github.com/es-progress/.github/actions/workflows/main.yml/badge.svg)](https://github.com/es-progress/.github/actions/workflows/main.yml)
+
 This repository contains default files and workflows for GitHub.
 
 ## Github Actions reusable workflows

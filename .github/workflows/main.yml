@@ -8,6 +8,6 @@ on:
 jobs:
   format:
     name: Check format
-    uses: .github/workflows/prettier.yml
+    uses: ./.github/workflows/prettier.yml
     with:
       pattern: "**/*.yml"
