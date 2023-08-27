@@ -17,16 +17,23 @@ jobs:
     name: Run beautysh
     runs-on: ubuntu-20.04
     steps:
+      - name: Self checkout
+        uses: actions/checkout@v3
+
+      - name: Create requirements.txt
+        run: |
+          mkdir -p .github/workflows/es-progress/.github
+          echo beautysh > .github/workflows/es-progress/.github/requirements.txt
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
+          cache: pip
+          cache-dependency-path: .github/workflows/es-progress/.github/requirements.txt
 
       - name: Install beautysh
-        run: pip install beautysh
-
-      - name: Self checkout
-        uses: actions/checkout@v3
+        run: pip install -r .github/workflows/es-progress/.github/requirements.txt
 
       - name: Compile list of files to format
         run: |
