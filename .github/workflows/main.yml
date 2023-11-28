@@ -11,3 +11,10 @@ jobs:
     uses: ./.github/workflows/prettier.yml
     with:
       pattern: "**/*.yml"
+  test-beautysh:
+    name: Test workflow (beautysh)
+    needs: format
+    uses: ./.github/workflows/beautysh.yml
+    with:
+      dir: tests/workflows
+      params: --force-function-style fnpar --indent-size 2

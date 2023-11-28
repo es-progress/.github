@@ -45,7 +45,7 @@ jobs:
     uses: es-progress/.github/.github/workflows/beautysh.yml@main
     with:
       dir: bin/
-      beautysh_params: --force-function-style fnpar --indent-size 2
+      params: --force-function-style fnpar --indent-size 2
 ```
 
 ### mkdocs.yml
