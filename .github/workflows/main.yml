@@ -18,3 +18,11 @@ jobs:
     with:
       dir: tests/workflows
       params: --force-function-style fnpar --indent-size 2
+  test-shellcheck:
+    name: Test workflow (shellcheck)
+    needs: format
+    uses: ./.github/workflows/shellcheck.yml
+    with:
+      dir: tests/workflows
+      severity: error
+      params:

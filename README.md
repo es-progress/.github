@@ -189,5 +189,5 @@ jobs:
       dir: bin/
       severity: error
       # Don't pass any exra args to shellcheck
-      shellcheck_params:
+      params:
 ```
