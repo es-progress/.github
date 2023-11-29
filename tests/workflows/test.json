@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "url_params": {
+    "first_name": "John",
+    "last_name": "Doe",
+    "age": "30"
+  },
+  "headers": {
+    "Custom-Header": "custom value",
+    "Api-Key": "1234567890"
+  }
+}

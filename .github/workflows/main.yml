@@ -24,6 +24,12 @@ jobs:
     uses: ./.github/workflows/php-cs-fixer.yml
     with:
       params: --dry-run -v --allow-risky=yes --rules=@PSR12:risky .
+  test-prettier:
+    name: Test workflow (prettier)
+    needs: format
+    uses: ./.github/workflows/prettier.yml
+    with:
+      pattern: "**/*.json"
   test-shellcheck:
     name: Test workflow (shellcheck)
     needs: format
