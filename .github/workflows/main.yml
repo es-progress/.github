@@ -18,6 +18,12 @@ jobs:
     with:
       dir: tests/workflows
       params: --force-function-style fnpar --indent-size 2
+  test-php-cs-fixer:
+    name: Test workflow (php-cs-fixer)
+    needs: format
+    uses: ./.github/workflows/php-cs-fixer.yml
+    with:
+      params: --dry-run -v --allow-risky=yes --rules=@PSR12:risky .
   test-shellcheck:
     name: Test workflow (shellcheck)
     needs: format
