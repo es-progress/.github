@@ -1,0 +1,10 @@
+###################
+## Docs          ##
+## mkdocs config ##
+###################
+---
+site_name: ES-Progress GitHub repository
+site_author: Sandor Semsey
+copyright: Copyright © 2024 Sandor Semsey
+repo_url: https://github.com/es-progress/.github
+repo_name: es-progress/.github

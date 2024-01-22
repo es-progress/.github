@@ -18,6 +18,13 @@ jobs:
     with:
       dir: tests/workflows
       params: --force-function-style fnpar --indent-size 2
+  test-mkdocs:
+    name: Test workflow (mkdocs)
+    needs: format
+    uses: ./.github/workflows/mkdocs.yml
+    with:
+      plugins: mkdocs-literate-nav
+      params: --strict
   test-php-cs-fixer:
     name: Test workflow (php-cs-fixer)
     needs: format

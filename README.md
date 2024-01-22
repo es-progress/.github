@@ -87,7 +87,7 @@ jobs:
     uses: es-progress/.github/.github/workflows/mkdocs.yml@main
     with:
       plugins: mkdocs-literate-nav
-      mkdocs_params: --strict
+      params: --strict
 ```
 
 ### php-cs-fixer.yml
