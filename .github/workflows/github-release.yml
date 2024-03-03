@@ -1,9 +1,9 @@
-name: Create release
+name: GitHub release
 on:
   workflow_call:
     inputs:
       tag:
-        description: Tag to create release for
+        description: Tag to release
         type: string
         required: false
         default: ${{ github.ref_name }}
