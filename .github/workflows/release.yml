@@ -6,15 +6,4 @@ on:
 jobs:
   github-release:
     name: Create GitHub release
-    runs-on: ubuntu-20.04
-#    uses: ./.github/workflows/github-release.yml
-    steps:
-      - name: Create GitHub release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          tag="${{ github.ref_name }}"
-          echo gh release create "$tag" \
-              --repo="$GITHUB_REPOSITORY" \
-              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
-              --generate-notes
+    uses: ./.github/workflows/github-release.yml
