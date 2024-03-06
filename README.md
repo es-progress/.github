@@ -48,6 +48,36 @@ jobs:
       params: --force-function-style fnpar --indent-size 2
 ```
 
+### github-release.yml
+
+Create GitHub release with `gh` (GitHub CLI), from an already existing tag.
+If called on a tag push event, this input (tag name) can be omitted it will use the tag that initiated the workflow.
+Automatically generates title and notes (changelog) for the release.
+
+**Parameters**
+
+```
+tag:
+  description: Tag to release
+  type: string
+  required: false
+  default: ${{ github.ref_name }}
+```
+
+**Example**
+
+```
+name: Release
+on:
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
+jobs:
+  github-release:
+    name: Create GitHub release
+    uses: es-progress/.github/.github/workflows/github-release.yml@main
+```
+
 ### mkdocs.yml
 
 Deploys documentation created by MkDocs to `gh-pages` branch of the repository.
