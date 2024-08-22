@@ -45,4 +45,3 @@ jobs:
     with:
       dir: tests/workflows
       severity: info
-      params:
