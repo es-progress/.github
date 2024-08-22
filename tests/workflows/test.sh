@@ -25,6 +25,7 @@ case "$1" in
   "Production")
     _msg "Production"
     ;;
+  *) ;;
 esac
 
 _msg Testing
