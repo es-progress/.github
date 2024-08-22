@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - "**.yml"
+      - "tests/**"
 jobs:
   format:
     name: Check format
@@ -43,5 +44,5 @@ jobs:
     uses: ./.github/workflows/shellcheck.yml
     with:
       dir: tests/workflows
-      severity: error
+      severity: info
       params:
