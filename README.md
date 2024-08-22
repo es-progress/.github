@@ -200,7 +200,7 @@ params:
   description: Options to shellcheck
   type: string
   required: false
-  default: --format gcc --external-sources --shell bash --enable "add-default-case,avoid-nullary-conditions,check-extra-masked-returns,check-set-e-suppressed,deprecate-which,quote-safe-variables,require-double-brackets,require-variable-braces"
+  default:
 ```
 
 **Example**
@@ -218,6 +218,6 @@ jobs:
     with:
       dir: bin/
       severity: error
-      # Don't pass any exra args to shellcheck
-      params:
+      # Omit params, don't need any extra args to shellcheck
+      # params:
 ```

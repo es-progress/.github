@@ -12,6 +12,22 @@ function _msg() {
 set -eufo pipefail
 IFS=$'\n\t'
 
+for f in *.m3u
+do
+  grep -qi "hq.*mp3" "$f" \
+    && echo -e "'Playlist ${f} contains a HQ file in mp3 format'"
+done
+
+case "$1" in
+  "Testing")
+    _msg "Testing"
+    ;;
+  "Production")
+    _msg "Production"
+    ;;
+  *) ;;
+esac
+
 _msg Testing
 
 exit 0
