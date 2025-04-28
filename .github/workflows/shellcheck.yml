@@ -20,7 +20,7 @@ on:
 jobs:
   shellcheck:
     name: Run shellcheck
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Self checkout
         uses: actions/checkout@v4
