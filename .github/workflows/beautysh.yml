@@ -23,12 +23,14 @@ jobs:
       - name: Create requirements.txt
         run: |
           mkdir -p .github/workflows/es-progress/.github
-          echo beautysh > .github/workflows/es-progress/.github/requirements.txt
+          # it seems beautysh in Python 3.11+ requires setuptools explicitly
+          echo setuptools > .github/workflows/es-progress/.github/requirements.txt
+          echo beautysh >> .github/workflows/es-progress/.github/requirements.txt
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version: 3.x
           cache: pip
           cache-dependency-path: .github/workflows/es-progress/.github/requirements.txt
 
