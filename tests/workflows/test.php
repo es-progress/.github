@@ -5,24 +5,22 @@
  */
 class Mock
 {
-    /**
-     * @var string
-     */
-    protected string $message;
+    public const string ERROR_MSG = 'oh no!';
 
-    /**
-     * @param string $message
-     */
-    public function __construct(string $message)
+    public function __construct(protected string $message)
     {
-        $this->message = $message;
     }
 
-    /**
-     * @return string
-     */
     public function getMessage(): string
     {
         return $this->message;
+    }
+
+    /**
+     * This should be called on error.
+     */
+    protected function error(): never
+    {
+        throw new Exception(self::ERROR_MSG);
     }
 }
