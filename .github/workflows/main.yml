@@ -12,6 +12,7 @@ jobs:
     uses: ./.github/workflows/prettier.yml
     with:
       pattern: "**/*.yml"
+
   test-beautysh:
     name: Test workflow (beautysh)
     needs: format
@@ -19,6 +20,7 @@ jobs:
     with:
       dir: tests/workflows
       params: --force-function-style fnpar --indent-size 2
+
   test-mkdocs:
     name: Test workflow (mkdocs)
     needs: format
@@ -26,18 +28,21 @@ jobs:
     with:
       plugins: mkdocs-literate-nav
       params: --strict
+
   test-php-cs-fixer:
     name: Test workflow (php-cs-fixer)
     needs: format
     uses: ./.github/workflows/php-cs-fixer.yml
     with:
-      params: --dry-run -v --allow-risky=yes --rules=@PSR12:risky .
+      params: --dry-run -v --rules=@Symfony .
+
   test-prettier:
     name: Test workflow (prettier)
     needs: format
     uses: ./.github/workflows/prettier.yml
     with:
       pattern: "**/*.json"
+
   test-shellcheck:
     name: Test workflow (shellcheck)
     needs: format
