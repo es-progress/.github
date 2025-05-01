@@ -18,8 +18,8 @@ jobs:
       - name: Install php-cs-fixer
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
-          tools: php-cs-fixer:3.38.2
+          php-version: 8.3
+          tools: php-cs-fixer:3.75
 
       - name: Check code-style
         run: php-cs-fixer fix ${{ inputs.params }}
