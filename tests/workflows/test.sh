@@ -4,7 +4,7 @@
 #################
 
 function _msg() {
-  local msg="${1?:Message missing}"
+  local msg="${1:?Message missing}"
   echo "${msg}"
 }
 
