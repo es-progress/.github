@@ -4,7 +4,7 @@
 #################
 
 function _msg() {
-  local msg="${1?:Message missing}"
+  local msg="${1:?Message missing}"
   echo "${msg}"
 }
 
@@ -19,15 +19,15 @@ do
 done
 
 case "$1" in
-  "Testing")
-    _msg "Testing"
+  Testing)
+    _msg Testing
     ;;
-  "Production")
-    _msg "Production"
+  Production)
+    _msg Production
     ;;
-  *) ;;
+  *) echo "test.sh: invalid case" >&2 ;;
 esac
 
-_msg Testing
+_msg "End of test script."
 
 exit 0
