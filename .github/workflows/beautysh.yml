@@ -11,7 +11,7 @@ on:
         description: Options to beautysh
         type: string
         required: false
-        default: --force-function-style paronly
+        default: --force-function-style paronly --variable-style braces
 jobs:
   beautysh:
     name: Run beautysh
@@ -23,9 +23,7 @@ jobs:
       - name: Create requirements.txt
         run: |
           mkdir -p .github/workflows/es-progress/.github
-          # it seems beautysh in Python 3.11+ requires setuptools explicitly
-          echo setuptools > .github/workflows/es-progress/.github/requirements.txt
-          echo beautysh >> .github/workflows/es-progress/.github/requirements.txt
+          echo beautysh > .github/workflows/es-progress/.github/requirements.txt
 
       - name: Setup Python
         uses: actions/setup-python@v5

@@ -14,7 +14,7 @@ IFS=$'\n\t'
 
 for f in *.m3u
 do
-  grep -qi "hq.*mp3" "$f" \
+  grep -qi "hq.*mp3" "${f}" \
     && echo -e "'Playlist ${f} contains a HQ file in mp3 format'"
 done
 
