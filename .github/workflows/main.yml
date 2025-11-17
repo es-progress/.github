@@ -19,7 +19,7 @@ jobs:
     uses: ./.github/workflows/beautysh.yml
     with:
       dir: tests/workflows
-      params: --force-function-style fnpar --indent-size 2
+      params: --force-function-style fnpar --indent-size 2 --variable-style braces
 
   test-mkdocs:
     name: Test workflow (mkdocs)
