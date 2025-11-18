@@ -29,6 +29,11 @@ params:
   type: string
   required: false
   default: --force-function-style paronly
+exclude:
+  description: Comma-separated list of file paths or glob patterns to exclude
+  type: string
+  required: false
+  default:
 ```
 
 **Example**
@@ -46,6 +51,7 @@ jobs:
     with:
       dir: bin/
       params: --force-function-style fnpar --indent-size 2
+      exclude: bin/excluded.sh,*pattern.sh
 ```
 
 ### github-release.yml

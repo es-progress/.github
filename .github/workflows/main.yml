@@ -20,6 +20,7 @@ jobs:
     with:
       dir: tests/workflows
       params: --force-function-style fnpar --indent-size 2 --variable-style braces
+      exclude: tests/workflows/excluded.sh,*pattern.sh
 
   test-mkdocs:
     name: Test workflow (mkdocs)

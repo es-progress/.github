@@ -12,6 +12,11 @@ on:
         type: string
         required: false
         default: --force-function-style paronly
+      exclude:
+        description: Comma-separated list of file paths or glob patterns to exclude
+        type: string
+        required: false
+        default:
 jobs:
   beautysh:
     name: Run beautysh
@@ -43,9 +48,24 @@ jobs:
           grep -rlZx --exclude="*.phar" '#!/usr/bin/env bash' ${{ inputs.dir }} >> ~/beautysh.temp
           # Deduplicate list
           sort -z ~/beautysh.temp | uniq -z > ~/beautysh.files
+
+          # Remove excluded files
+          > ~/beautysh.filtered
+          IFS=, read -r -a patterns <<< "${{ inputs.exclude }}"
+          while IFS= read -r -d '' file; do
+            skip=
+            for pattern in "${patterns[@]}"; do
+              if [[ "${file}" == ${pattern} ]]; then
+                skip=1
+                break
+              fi
+            done
+          [[ -z "${skip}" ]] && printf '%s\0' "${file}" >> ~/beautysh.filtered
+          done < ~/beautysh.files
+
           # List files (for debug)
           echo "Files found:"
-          cat ~/beautysh.files | tr '\0' '\n'
+          cat ~/beautysh.filtered | tr '\0' '\n'
 
       - name: Check code-style
-        run: xargs -0 beautysh --check ${{ inputs.params }} < ~/beautysh.files
+        run: xargs -0 beautysh --check ${{ inputs.params }} < ~/beautysh.filtered
