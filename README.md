@@ -51,6 +51,7 @@ jobs:
     with:
       dir: bin/
       params: --force-function-style fnpar --indent-size 2
+      exclude: bin/excluded.sh,*pattern.sh
 ```
 
 ### github-release.yml
