@@ -11,7 +11,7 @@ on:
         description: Options to beautysh
         type: string
         required: false
-        default: --force-function-style paronly --variable-style braces
+        default: --force-function-style paronly
 jobs:
   beautysh:
     name: Run beautysh
