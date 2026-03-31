@@ -60,7 +60,7 @@ jobs:
                 break
               fi
             done
-          [[ -z "${skip}" ]] && printf '%s\0' "${file}" >> ~/beautysh.filtered
+            [[ -z "${skip}" ]] && printf '%s\0' "${file}" >> ~/beautysh.filtered
           done < ~/beautysh.files
 
           # List files (for debug)
