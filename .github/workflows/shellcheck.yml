@@ -17,6 +17,11 @@ on:
         type: string
         required: false
         default:
+      exclude:
+        description: Comma-separated list of file paths or glob patterns to exclude
+        type: string
+        required: false
+        default:
 jobs:
   shellcheck:
     name: Run shellcheck
@@ -36,9 +41,24 @@ jobs:
           grep -rlZx --exclude="*.phar" '#!/usr/bin/env bash' ${{ inputs.dir }} >> ~/shellcheck.temp
           # Deduplicate list
           sort -z ~/shellcheck.temp | uniq -z > ~/shellcheck.files
+
+          # Remove excluded files
+          > ~/shellcheck.filtered
+          IFS=, read -r -a patterns <<< "${{ inputs.exclude }}"
+          while IFS= read -r -d '' file; do
+            skip=
+            for pattern in "${patterns[@]}"; do
+              if [[ "${file}" == ${pattern} ]]; then
+                skip=1
+                break
+              fi
+            done
+            [[ -z "${skip}" ]] && printf '%s\0' "${file}" >> ~/shellcheck.filtered
+          done < ~/shellcheck.files
+
           # List files (for debug)
           echo "Files found:"
-          cat ~/shellcheck.files | tr '\0' '\n'
+          cat ~/shellcheck.filtered | tr '\0' '\n'
 
       - name: Run shellcheck
-        run: xargs -0 shellcheck --severity ${{ inputs.severity }} ${{ inputs.params }} < ~/shellcheck.files
+        run: xargs -0 shellcheck --severity ${{ inputs.severity }} ${{ inputs.params }} < ~/shellcheck.filtered

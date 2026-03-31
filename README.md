@@ -207,6 +207,11 @@ params:
   type: string
   required: false
   default:
+exclude:
+  description: Comma-separated list of file paths or glob patterns to exclude
+  type: string
+  required: false
+  default:
 ```
 
 **Example**
@@ -226,4 +231,5 @@ jobs:
       severity: error
       # Omit params, don't need any extra args to shellcheck
       # params:
+      exclude: bin/excluded.sh,*pattern.sh
 ```
