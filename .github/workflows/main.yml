@@ -51,3 +51,4 @@ jobs:
     with:
       dir: tests/workflows
       severity: info
+      exclude: tests/workflows/excluded.sh,*pattern.sh
